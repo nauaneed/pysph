@@ -1,6 +1,7 @@
 # Automatically generated, do not edit.
 # cython: cdivision=True, language_level=3
 # distuils: language=c++
+# distutils: define_macros=NPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION
 <%def name="indent(text, level=0)" buffered="True">
 % for l in text.splitlines():
 ${' '*4*level}${l}
