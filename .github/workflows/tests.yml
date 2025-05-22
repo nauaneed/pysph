@@ -60,7 +60,7 @@ jobs:
           python -m pip install https://github.com/pypr/cyarray/zipball/master
           python -m pip install https://github.com/pypr/compyle/zipball/master
           python -m pip install -r requirements.txt -r requirements-test.txt
-          python -m pip install --no-build-isolation -v -e .
+          python -m pip install . --no-build-isolation -v
           python -m pip list
       # Cache auto-generated code. Cache key changes every month.
       # Thanks https://stackoverflow.com/a/60942437
@@ -76,4 +76,5 @@ jobs:
           key: ${{ runner.os }}-${{ steps.month.outputs.month }}-${{ matrix.python-version }}
       - name: Run tests
         run: |
-          python -m pytest -v -m 'not slow or slow'
+          cd ..
+          python -m pytest -v -m 'not slow or slow' --pyargs pysph
