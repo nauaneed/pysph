@@ -76,5 +76,4 @@ jobs:
           key: ${{ runner.os }}-${{ steps.month.outputs.month }}-${{ matrix.python-version }}
       - name: Run tests
         run: |
-          cd ..
-          python -m pytest -v -m 'not slow or slow' --pyargs pysph
+          pytest -v -m 'not slow or slow' --pyargs pysph
