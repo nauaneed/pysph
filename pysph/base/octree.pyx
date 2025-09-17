@@ -706,6 +706,7 @@ cdef class Octree:
             self.root.num_particles = num_particles
             self.depth = self._c_build_tree_level1(pa_wrapper, self.root.xmin,
                     self.root.length, self.root, num_threads)
+            del indices_ptr
 
         # Use the serial method
         else:
@@ -714,6 +715,7 @@ cdef class Octree:
                 indices_ptr.push_back(i)
             self.depth = self._c_build_tree(pa_wrapper, indices_ptr, self.root.xmin,
                 self.root.length, self.root, 0)
+            # indices_ptr is deleted in _c_build_tree
 
         return self.depth
 
